@@ -1,9 +1,9 @@
 export const artifactsData = [
   { 
     id: 'remixed-6ecd48ff', 
-    name: 'UI コンポーネントデモ', 
-    description: 'Reactで作成されたUI関連のコンポーネント集',
-    image: 'ui-components.png'
+    name: 'ナップサック問題の可視化 (拡張版)', 
+    description: 'Reactで作成されたナップサック問題のインタラクティブな可視化ツール',
+    image: 'knapsack.png'
   },
   { 
     id: 'remixed-e2a07c44', 
