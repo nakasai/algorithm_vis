@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const EditDistanceVisualizer = () => {
+  // remixed-e2a07c44.tsx のコンテンツをここに配置予定
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">編集距離アルゴリズム可視化</h1>
