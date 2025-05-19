@@ -3,21 +3,37 @@ import { useParams, Link } from 'react-router-dom';
 import { artifactsData } from '../data/artifactsData';
 
 // アーティファクトをLazy Loadingする
-const loadArtifact = (artifactId: string) => {
+const artifactComponents: { [key: string]: React.LazyExoticComponent<React.ComponentType<any>> } = {
+  'edit-distance': lazy(() => import('../artifacts/EditDistanceVisualizer')),
+  'stack-queue': lazy(() => import('../artifacts/StackQueueVisualizer')),
+  // 'remixed-6ecd48ff': lazy(() => import('../artifacts/UIComponentDemo')), // Old, to be replaced
+  'remixed-6ecd48ff': lazy(() => import('../artifacts/KnapsackVisualizerEnhanced')),
+  'data-structures': lazy(() => import('../artifacts/DataStructureVisualizer')), // Corrected path if needed, verify filename
+  'interval-partitioning': lazy(() => import('../artifacts/IntervalPartitionVisualizer')), // Corrected path if needed, verify filename
+  'greedy-algorithms': lazy(() => import('../artifacts/GreedyAlgorithmDemo')), // Corrected path if needed, verify filename
+};
+
+const getArtifactComponent = (artifactId: string): React.LazyExoticComponent<React.ComponentType<any>> | null => {
   switch (artifactId) {
+    case 'edit-distance':
+      return artifactComponents['edit-distance'];
+    case 'stack-queue':
+      return artifactComponents['stack-queue'];
     case 'remixed-6ecd48ff':
-      return lazy(() => import('../artifacts/UIComponentDemo'));
-    case 'remixed-e2a07c44':
-      return lazy(() => import('../artifacts/EditDistanceVisualizer'));
-    case 'remixed-de94d2fd':
-      return lazy(() => import('../artifacts/StackQueueVisualizer'));
-    case 'remixed-ce646c59':
+      return artifactComponents['remixed-6ecd48ff'];
+    // case 'remixed-6ecd48ff':  // This was the original line for UIComponentDemo
+    //   return lazy(() => import('../artifacts/UIComponentDemo'));
+    case 'data-structures':
+      // Assuming filename is DataStructureVisualizer.tsx
       return lazy(() => import('../artifacts/DataStructureVisualizer'));
-    case 'remixed-162045d8':
+    case 'interval-partitioning':
+      // Assuming filename is IntervalPartitionVisualizer.tsx
       return lazy(() => import('../artifacts/IntervalPartitionVisualizer'));
-    case 'remixed-9392be62':
+    case 'greedy-algorithms':
+      // Assuming filename is GreedyAlgorithmDemo.tsx
       return lazy(() => import('../artifacts/GreedyAlgorithmDemo'));
     default:
+      console.warn(`Unknown artifactId: ${artifactId}`);
       return null;
   }
 };
@@ -34,7 +50,7 @@ const ArtifactViewer: React.FC = () => {
       setArtifactInfo(info);
       
       // コンポーネントをロード
-      const component = loadArtifact(artifactId);
+      const component = getArtifactComponent(artifactId);
       setArtifactComponent(component);
     }
   }, [artifactId]);
