@@ -1,9 +1,9 @@
 {
-  "name": "claude-artifacts",
+  "name": "algorithm_vis",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://n4kei.github.io/claude-artifacts",
+  "homepage": "https://nakasai.github.io/algorithm_vis",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

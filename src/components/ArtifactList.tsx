@@ -89,11 +89,11 @@ const ArtifactList: React.FC = () => {
             >
               <div className="h-48 bg-gray-200 flex items-center justify-center">
                 <img
-                  src={`/claude-artifacts/images/${artifact.image || 'placeholder.png'}`} 
+                  src={`/algorithm_vis/images/${artifact.image || 'placeholder.png'}`} 
                   alt={artifact.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/claude-artifacts/images/placeholder.png';
+                    (e.target as HTMLImageElement).src = '/algorithm_vis/images/placeholder.png';
                   }}
                 />
               </div>

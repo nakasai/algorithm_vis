@@ -5,7 +5,7 @@
 ## アクセス方法
 
 このギャラリーはGitHub Pagesで公開されており、次のURLでアクセスできます：
-https://n4kei.github.io/claude-artifacts/
+https://nakasai.github.io/algorithm_vis/
 
 ## コンテンツ
 
@@ -50,7 +50,3 @@ npm run deploy
 - Vite
 - Tailwind CSS
 - Framer Motion
-
-## ライセンス
-
-MITライセンス

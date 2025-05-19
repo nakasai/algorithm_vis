@@ -6,7 +6,7 @@ import NotFound from './components/NotFound';
 
 const App: React.FC = () => {
   return (
-    <Router basename="/claude-artifacts">
+    <Router basename="/algorithm_vis">
       <Routes>
         <Route path="/" element={<ArtifactList />} />
         <Route path="/:artifactId" element={<ArtifactViewer />} />
