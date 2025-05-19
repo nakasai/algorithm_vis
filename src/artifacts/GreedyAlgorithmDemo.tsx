@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const GreedyAlgorithmDemo: React.FC = () => {
-  // 必要な変数だけを残し、使用していない変数にはアンダースコアをつける
-  // 硬貨の種類（円）
-  const [_coins, setCoins] = useState([500, 100, 50, 10, 5, 1]);
+  // 硬貨の種類（円）- 直接値を使用する形に修正
+  const coins = [500, 100, 50, 10, 5, 1];
+
   // 目標金額
   const [targetAmount, setTargetAmount] = useState(763);
   // 選択された硬貨
-  const [_selectedCoins, setSelectedCoins] = useState([]);
+  const [selectedCoins, setSelectedCoins] = useState<number[]>([]);
   // 残りの金額
-  const [_remainingAmount, setRemainingAmount] = useState(763);
+  const [remainingAmount, setRemainingAmount] = useState(763);
   
-  // ダミーのデータを表示するためのステートを追加
-  const [dummyCoins] = useState({
+  // ダミーのグループ化されたコイン（表示用）
+  const coinDisplay = {
     "500": 1,
     "100": 2,
     "10": 1,
     "1": 3
-  });
+  };
 
   // 選択された硬貨をグループ化して表示
-  const groupedCoins = _selectedCoins.reduce((acc: Record<string, number>, coin) => {
+  const groupedCoins = selectedCoins.reduce((acc: Record<string, number>, coin) => {
     acc[coin] = (acc[coin] || 0) + 1;
     return acc;
   }, {});
@@ -59,7 +59,7 @@ const GreedyAlgorithmDemo: React.FC = () => {
       <div className="mb-4 p-4 bg-white rounded shadow">
         <h2 className="text-xl font-semibold mb-2">選択された硬貨:</h2>
         <div className="flex flex-wrap gap-2">
-          {Object.entries(dummyCoins).map(([coin, count]) => (
+          {Object.entries(coinDisplay).map(([coin, count]) => (
             <div key={coin} className="px-3 py-2 bg-green-100 rounded-full">
               {coin}円 × {count}
             </div>

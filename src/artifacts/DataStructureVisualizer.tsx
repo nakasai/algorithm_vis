@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// lucide-reactのアイコンで実際に使用するものだけをインポート
+import { useState } from 'react';
+// 使用中のアイコンのみをインポート
 import { RotateCcw, Search, Plus, Trash } from 'lucide-react';
 
 const DataStructureVisualizer = () => {
