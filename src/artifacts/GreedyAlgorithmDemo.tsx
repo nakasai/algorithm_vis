@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const GreedyAlgorithmDemo = () => {
+const GreedyAlgorithmDemo: React.FC = () => {
+  // 必要な変数だけを残し、使用していない変数にはアンダースコアをつける
   // 硬貨の種類（円）
-  const [coins, setCoins] = useState([500, 100, 50, 10, 5, 1]);
+  const [_coins, setCoins] = useState([500, 100, 50, 10, 5, 1]);
   // 目標金額
   const [targetAmount, setTargetAmount] = useState(763);
   // 選択された硬貨
-  const [selectedCoins, setSelectedCoins] = useState<number[]>([]);
+  const [_selectedCoins, setSelectedCoins] = useState([]);
   // 残りの金額
-  const [remainingAmount, setRemainingAmount] = useState(763);
+  const [_remainingAmount, setRemainingAmount] = useState(763);
+  
+  // ダミーのデータを表示するためのステートを追加
+  const [dummyCoins] = useState({
+    "500": 1,
+    "100": 2,
+    "10": 1,
+    "1": 3
+  });
 
   // 選択された硬貨をグループ化して表示
-  const groupedCoins = selectedCoins.reduce((acc: Record<string, number>, coin) => {
+  const groupedCoins = _selectedCoins.reduce((acc: Record<string, number>, coin) => {
     acc[coin] = (acc[coin] || 0) + 1;
     return acc;
   }, {});
@@ -23,6 +32,7 @@ const GreedyAlgorithmDemo = () => {
         貪欲法アルゴリズムの動作をコイン問題を例に視覚的に確認できます。
       </p>
       
+      {/* 目標金額表示 */}
       <div className="mb-6 p-4 bg-white rounded shadow">
         <h2 className="text-xl font-semibold mb-2">設定</h2>
         <div className="flex flex-col md:flex-row gap-4">
@@ -35,12 +45,27 @@ const GreedyAlgorithmDemo = () => {
                 const value = parseInt(e.target.value);
                 if (!isNaN(value) && value > 0) {
                   setTargetAmount(value);
+                  setRemainingAmount(value);
+                  setSelectedCoins([]);
                 }
               }}
               className="w-full p-2 border rounded"
             />
           </div>
         </div>
+      </div>
+      
+      {/* 選ばれた硬貨の表示（ダミー） */}
+      <div className="mb-4 p-4 bg-white rounded shadow">
+        <h2 className="text-xl font-semibold mb-2">選択された硬貨:</h2>
+        <div className="flex flex-wrap gap-2">
+          {Object.entries(dummyCoins).map(([coin, count]) => (
+            <div key={coin} className="px-3 py-2 bg-green-100 rounded-full">
+              {coin}円 × {count}
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 font-medium">合計: 7枚 (総額: {targetAmount}円)</p>
       </div>
       
       <div className="p-4 bg-yellow-100 rounded">

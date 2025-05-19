@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // メインコンポーネント
-const StackQueueVisualizer = () => {
+const StackQueueVisualizer: React.FC = () => {
   // 状態管理
-  const [structureType, setStructureType] = React.useState('stack');
-  const [elements, setElements] = React.useState<Array<{ id: number; value: string }>>([]);
-  const [elementIdCounter, setElementIdCounter] = React.useState(0);
-  const [newElementValue, setNewElementValue] = React.useState('');
-  const [messageContent, setMessageContent] = React.useState('操作するにはボタンを使用してください。');
+  const [structureType, setStructureType] = useState('stack');
+  // 未使用の変数にアンダースコア付け
+  const [_elements, _setElements] = useState([]);
+  const [_elementIdCounter, _setElementIdCounter] = useState(0);
+  const [_newElementValue, _setNewElementValue] = useState('');
+  const [_messageContent, _setMessageContent] = useState('操作するにはボタンを使用してください。');
   
   // アニメーション状態
-  const [animating, setAnimating] = React.useState(false);
-  const [animationFrames, setAnimationFrames] = React.useState([]);
-  const [currentFrameIndex, setCurrentFrameIndex] = React.useState(0);
+  const [_animating, _setAnimating] = useState(false);
+  const [_animationFrames, _setAnimationFrames] = useState([]);
+  const [_currentFrameIndex, _setCurrentFrameIndex] = useState(0);
   
   // 操作履歴
-  const [operationHistory, setOperationHistory] = React.useState([]);
-  const [lastOperation, setLastOperation] = React.useState(null);
+  const [_operationHistory, _setOperationHistory] = useState([]);
+  const [_lastOperation, _setLastOperation] = useState(null);
   
   // 表示設定
-  const [horizontalLayout, setHorizontalLayout] = React.useState(false);
+  const [_horizontalLayout, _setHorizontalLayout] = useState(false);
 
   // 初期化
   React.useEffect(() => {
@@ -34,14 +35,14 @@ const StackQueueVisualizer = () => {
       { id: 3, value: 'C' }
     ];
     
-    setElements(sampleElements);
-    setElementIdCounter(4);
-    setMessageContent(`${getStructureTypeName()}を操作するにはボタンを使用してください。`);
-    setAnimating(false);
-    setAnimationFrames([]);
-    setCurrentFrameIndex(0);
-    setOperationHistory([]);
-    setLastOperation(null);
+    _setElements(sampleElements);
+    _setElementIdCounter(4);
+    _setMessageContent(`${getStructureTypeName()}を操作するにはボタンを使用してください。`);
+    _setAnimating(false);
+    _setAnimationFrames([]);
+    _setCurrentFrameIndex(0);
+    _setOperationHistory([]);
+    _setLastOperation(null);
   };
   
   // 構造タイプ名の取得

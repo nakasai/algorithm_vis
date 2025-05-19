@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const IntervalPartitionVisualizer = () => {
+const IntervalPartitionVisualizer: React.FC = () => {
   // 基本的なステート管理
   const [n, setN] = useState(5); // 数列の長さ
   const [k, setK] = useState(2); // 分割数

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const EditDistanceVisualizer = () => {
+const EditDistanceVisualizer: React.FC = () => {
   // remixed-e2a07c44.tsx のコンテンツをここに配置予定
   return (
     <div className="container mx-auto p-4">
