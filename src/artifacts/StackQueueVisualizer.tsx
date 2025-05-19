@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// 要素の型定義
+interface Element {
+  id: number;
+  value: string;
+}
 
 // メインコンポーネント
 const StackQueueVisualizer: React.FC = () => {
@@ -12,8 +18,7 @@ const StackQueueVisualizer: React.FC = () => {
   // アニメーション状態
   const [animating, setAnimating] = useState(false);
   const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
-  
-  // 操作履歴
+    // 操作履歴
   const [operationHistory, setOperationHistory] = useState<string[]>([]);
   
   // 表示設定
@@ -24,7 +29,8 @@ const StackQueueVisualizer: React.FC = () => {
     resetStructure();
   }, [structureType]);
   
-  // リセット  const resetStructure = () => {
+  // リセット
+  const resetStructure = () => {
     // 初期データを設定
     const sampleElements: Element[] = [
       { id: 1, value: 'A' },
@@ -39,8 +45,7 @@ const StackQueueVisualizer: React.FC = () => {
     setCurrentFrameIndex(0);
     setOperationHistory([]);
   };
-  
-  // 要素の追加
+    // 要素の追加
   const pushElement = () => {
     if (newElementValue.trim() === '') {
       setMessageContent('値を入力してください');
@@ -52,10 +57,8 @@ const StackQueueVisualizer: React.FC = () => {
       value: newElementValue
     };
     
-    setElements([...elements, newElement]);
-    setElementIdCounter(elementIdCounter + 1);
+    setElements([...elements, newElement]);    setElementIdCounter(elementIdCounter + 1);
     setNewElementValue('');
-    setLastOperation('push');
     setOperationHistory([...operationHistory, `Push: ${newElement.value}`]);
     setMessageContent(`${newElement.value} を追加しました`);
   };
@@ -74,9 +77,7 @@ const StackQueueVisualizer: React.FC = () => {
     
     const newElements = [...elements];
     newElements.splice(index, 1);
-    
-    setElements(newElements);
-    setLastOperation('pop');
+      setElements(newElements);
     setOperationHistory([...operationHistory, `Pop: ${removedElement.value}`]);
     setMessageContent(`${removedElement.value} を取り出しました`);
   };
@@ -85,6 +86,7 @@ const StackQueueVisualizer: React.FC = () => {
   const getStructureTypeName = () => {
     return structureType === 'stack' ? 'スタック' : 'キュー';
   };
+  
   // レイアウト方向を切り替える
   const toggleLayout = () => {
     setHorizontalLayout(!horizontalLayout);
@@ -213,8 +215,7 @@ const StackQueueVisualizer: React.FC = () => {
           <p>アニメーション実行中...</p>
         </div>
       )}
-      
-      <div className="p-4 bg-yellow-100 rounded">
+        <div className="p-4 bg-yellow-100 rounded">
         <p>このアーティファクトは実装が完了しました。スタックとキューの基本操作を試すことができます。</p>
       </div>
     </div>
