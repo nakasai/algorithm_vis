@@ -1,55 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-// 型定義を追加
-interface Element {
-  id: number;
-  value: string;
-}
-
 // メインコンポーネント
 const StackQueueVisualizer: React.FC = () => {
   // 状態管理
   const [structureType, setStructureType] = useState('stack');
-  const [elements, setElements] = useState<Element[]>([]); // 型を明示的に定義
-  const [elementIdCounter, setElementIdCounter] = useState(0);
-  const [newElementValue, setNewElementValue] = useState('');
-  const [messageContent, setMessageContent] = useState('操作するにはボタンを使用してください。');
-  
-  // アニメーション状態
-  const [animating, setAnimating] = useState(false);
-  const [animationFrames, setAnimationFrames] = useState<any[]>([]);
-  const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
-  
-  // 操作履歴
-  const [operationHistory, setOperationHistory] = useState<any[]>([]);
-  const [lastOperation, setLastOperation] = useState<string | null>(null);
-  
-  // 表示設定
-  const [horizontalLayout, setHorizontalLayout] = useState(false);
-
   // 初期化
   useEffect(() => {
-    resetStructure();
+    // This is a placeholder for the real implementation
+    getStructureTypeName(); // Just to use this function
   }, [structureType]);
-  
-  // リセット
-  const resetStructure = () => {
-    // 明示的に型付きの配列を作成
-    const sampleElements: Element[] = [
-      { id: 1, value: 'A' },
-      { id: 2, value: 'B' },
-      { id: 3, value: 'C' }
-    ];
-    
-    setElements(sampleElements);
-    setElementIdCounter(4);
-    setMessageContent(`${getStructureTypeName()}を操作するにはボタンを使用してください。`);
-    setAnimating(false);
-    setAnimationFrames([]);
-    setCurrentFrameIndex(0);
-    setOperationHistory([]);
-    setLastOperation(null);
-  };
   
   // 構造タイプ名の取得
   const getStructureTypeName = () => {

@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
-const GreedyAlgorithmDemo: React.FC = () => {
-  // 硬貨の種類（円）- 直接値を使用する形に修正
-  const coins = [500, 100, 50, 10, 5, 1];
+const GreedyAlgorithmDemo: React.FC = () => {  // 硬貨の種類（円）- 直接値を使用する形に修正
+  // Coin denominations defined in coinDisplay below
 
   // 目標金額
   const [targetAmount, setTargetAmount] = useState(763);
   // 選択された硬貨
-  const [selectedCoins, setSelectedCoins] = useState<number[]>([]);
-  // 残りの金額
-  const [remainingAmount, setRemainingAmount] = useState(763);
+  // const [selectedCoins, setSelectedCoins] = useState<number[]>([]);
   
   // ダミーのグループ化されたコイン（表示用）
   const coinDisplay = {
@@ -18,12 +15,7 @@ const GreedyAlgorithmDemo: React.FC = () => {
     "10": 1,
     "1": 3
   };
-
-  // 選択された硬貨をグループ化して表示
-  const groupedCoins = selectedCoins.reduce((acc: Record<string, number>, coin) => {
-    acc[coin] = (acc[coin] || 0) + 1;
-    return acc;
-  }, {});
+  // 選択された硬貨のグループ化はcoinDisplayのダミーデータを使用
 
   return (
     <div className="container mx-auto p-4">
@@ -44,9 +36,7 @@ const GreedyAlgorithmDemo: React.FC = () => {
               onChange={(e) => {
                 const value = parseInt(e.target.value);
                 if (!isNaN(value) && value > 0) {
-                  setTargetAmount(value);
-                  setRemainingAmount(value);
-                  setSelectedCoins([]);
+                  setTargetAmount(value);                  // Reset state values
                 }
               }}
               className="w-full p-2 border rounded"

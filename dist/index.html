@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude アーティファクト ギャラリー</title>
+    <script type="text/javascript">
+      // URLパラメータからパスを取得し、ルーティングに使用する
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        } else {
+          // URLパラメータ'p'からパスを取得
+          var p = new URLSearchParams(window.location.search).get('p');
+          var q = new URLSearchParams(window.location.search).get('q');
+          
+          if (p) {
+            // クエリパラメータがあれば追加
+            var newPath = '/' + p + (q ? '?' + q : '');
+            history.replaceState(null, null, newPath);
+          }
+        }
+      })();
+    </script>
+  <script type="module" crossorigin src="/algorithm_vis/assets/index-6a7309ec.js"></script>
+  <link rel="stylesheet" href="/algorithm_vis/assets/index-d0f3ab5f.css">
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Reactアプリケーションがここにマウントされます -->
+    
+</body>
+</html>

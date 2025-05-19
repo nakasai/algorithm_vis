@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// 使用中のアイコンのみをインポート
-import { RotateCcw, Search, Plus, Trash } from 'lucide-react';
 
 const DataStructureVisualizer = () => {
   // 各種機能の簡易実装
