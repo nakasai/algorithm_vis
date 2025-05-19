@@ -1,6 +1,13 @@
 import React from "react";
 
-export function Button({ children, className, ...props }) {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  className?: string;
+  variant?: 'outline' | 'destructive' | 'secondary' | 'default';
+  size?: 'sm' | 'default';
+}
+
+export function Button({ children, className, ...props }: ButtonProps) {
   const baseClasses = "px-4 py-2 rounded font-medium focus:outline-none transition-colors";
   let variantClasses = "bg-blue-500 hover:bg-blue-600 text-white";
 

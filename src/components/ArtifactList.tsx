@@ -16,7 +16,7 @@ const ArtifactList: React.FC = () => {
   ];
 
   // アーティファクトとカテゴリーのマッピング
-  const artifactCategories = {
+  const artifactCategories: Record<string, string[]> = {
     'remixed-6ecd48ff': ['ui'],
     'remixed-e2a07c44': ['algorithm'],
     'remixed-de94d2fd': ['datastructure'],
@@ -43,6 +43,9 @@ const ArtifactList: React.FC = () => {
       );
     }
   };
+
+  // 環境変数の代わりに定数を使用
+  const BASE_PATH = '/algorithm_vis';
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -89,11 +92,11 @@ const ArtifactList: React.FC = () => {
             >
               <div className="h-48 bg-gray-200 flex items-center justify-center">
                 <img
-                  src={`${process.env.NODE_ENV === 'production' ? '/algorithm_vis' : ''}/images/${artifact.image || 'placeholder.png'}`} 
+                  src={`${BASE_PATH}/images/${artifact.image || 'placeholder.png'}`} 
                   alt={artifact.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = `${process.env.NODE_ENV === 'production' ? '/algorithm_vis' : ''}/images/placeholder.png`;
+                    (e.target as HTMLImageElement).src = `${BASE_PATH}/images/placeholder.png`;
                   }}
                 />
               </div>

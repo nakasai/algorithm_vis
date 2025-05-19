@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // メインコンポーネント
 const StackQueueVisualizer = () => {
   // 状態管理
-  const [structureType, setStructureType] = useState('stack');
-  const [elements, setElements] = useState([]);
-  const [elementIdCounter, setElementIdCounter] = useState(0);
-  const [newElementValue, setNewElementValue] = useState('');
-  const [messageContent, setMessageContent] = useState('操作するにはボタンを使用してください。');
+  const [structureType, setStructureType] = React.useState('stack');
+  const [elements, setElements] = React.useState<Array<{ id: number; value: string }>>([]);
+  const [elementIdCounter, setElementIdCounter] = React.useState(0);
+  const [newElementValue, setNewElementValue] = React.useState('');
+  const [messageContent, setMessageContent] = React.useState('操作するにはボタンを使用してください。');
   
   // アニメーション状態
-  const [animating, setAnimating] = useState(false);
-  const [animationFrames, setAnimationFrames] = useState([]);
-  const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
+  const [animating, setAnimating] = React.useState(false);
+  const [animationFrames, setAnimationFrames] = React.useState([]);
+  const [currentFrameIndex, setCurrentFrameIndex] = React.useState(0);
   
   // 操作履歴
-  const [operationHistory, setOperationHistory] = useState([]);
-  const [lastOperation, setLastOperation] = useState(null);
+  const [operationHistory, setOperationHistory] = React.useState([]);
+  const [lastOperation, setLastOperation] = React.useState(null);
   
   // 表示設定
-  const [horizontalLayout, setHorizontalLayout] = useState(false);
+  const [horizontalLayout, setHorizontalLayout] = React.useState(false);
 
   // 初期化
-  useEffect(() => {
+  React.useEffect(() => {
     resetStructure();
   }, [structureType]);
   

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { RotateCcw, Search, Plus, Trash, ChevronLeft, ChevronRight, Edit } from 'lucide-react';
 
 const DataStructureVisualizer = () => {
   // 各種機能の簡易実装
-  const [structureType, setStructureType] = useState('array');
+  const [structureType, setStructureType] = React.useState('array');
 
   return (
     <div className="container mx-auto p-4">

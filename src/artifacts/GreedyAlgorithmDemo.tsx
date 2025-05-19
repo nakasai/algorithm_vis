@@ -6,7 +6,15 @@ const GreedyAlgorithmDemo = () => {
   // 目標金額
   const [targetAmount, setTargetAmount] = useState(763);
   // 選択された硬貨
-  const [selectedCoins, setSelectedCoins] = useState([]);
+  const [selectedCoins, setSelectedCoins] = useState<number[]>([]);
+  // 残りの金額
+  const [remainingAmount, setRemainingAmount] = useState(763);
+
+  // 選択された硬貨をグループ化して表示
+  const groupedCoins = selectedCoins.reduce((acc: Record<string, number>, coin) => {
+    acc[coin] = (acc[coin] || 0) + 1;
+    return acc;
+  }, {});
 
   return (
     <div className="container mx-auto p-4">
